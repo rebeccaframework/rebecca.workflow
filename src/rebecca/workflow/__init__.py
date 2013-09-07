@@ -39,6 +39,13 @@ class Workflow(object):
                     trans(target)
                     setattr(target, self.attr, trans.to_state)
 
+    def update(self, values):
+        self.states = []
+        for state in values['states']:
+            self.add_state(state)
+
+        for trans in values['transitions']:
+            self.add_transition(trans['name'], trans['from_state'], trans['to_state'])
 
 class State(object):
     def __init__(self, name):

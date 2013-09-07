@@ -13,6 +13,26 @@ Transitions
 
 >>> workflow.add_transition("finish", "new", "finished")
 
+setup by json
+-------------------------------------------------
+
+>>> setups = {
+...     "name": "testing",
+...     "states": [
+...         "new",
+...         "finished",
+...     ],
+...     "transitions": [
+...         {
+...             "name": "finish",
+...             "from_state": "new",
+...             "to_state": "finished"
+...         }
+...     ]
+... }
+
+>>> w = Workflow(name="testing")
+>>> w.update(setups)
 
 Workflow API
 ----------------------------------------------
