@@ -4,6 +4,10 @@ requires = [
     "zope.interface",
 ]
 
+tests_require = [
+    "pytest",
+]
+
 setup(
     name='rebecca.workflow',
     version='0.0',
@@ -15,4 +19,5 @@ setup(
     author_email='aodagx@gmail.com',
     description='workflow',
     install_requires=requires,
+    tests_require=tests_require,
 )

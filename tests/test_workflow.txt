@@ -1,0 +1,33 @@
+>>> from rebecca.workflow import Workflow
+>>> workflow = Workflow("testing")
+
+States
+------------------------------------------
+
+>>> workflow.add_state("new")
+>>> workflow.add_state("finished")
+
+
+Transitions
+----------------------------------------------
+
+>>> workflow.add_transition("finish", "new", "finished")
+
+
+Workflow API
+----------------------------------------------
+
+>>> from rebecca.workflow.testing import Issue
+>>> issue = Issue("testing-issue")
+>>> workflow.current_state(issue) is None
+True
+>>> workflow.initialize(issue)
+>>> issue.status
+'new'
+>>> workflow.current_state(issue)
+'new'
+>>> list(workflow.available_transitions(issue))
+['finish']
+>>> workflow.to_state(issue, "finished")
+>>> workflow.current_state(issue)
+'finished'
